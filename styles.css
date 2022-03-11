@@ -30,25 +30,4 @@
   border: 1px solid #ddd;
   text-align: center;
   cursor: pointer;
-  /* filter: brightness(0.5); */
 }
-
-
-
-/* .grid {
-  width: 960px;
-  margin-top: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-}
-
-.square {
-  display: flex;
-  height: 20px;
-}
-
-.cell {
-  display: flex;
-  width: 50px;
-  border: 1px solid;
-  justify-content: space-around;
-} */
