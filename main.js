@@ -1,52 +1,50 @@
-const button = document.querySelector("#button");
-const gridContainer = document.querySelector("#container");
+const button = document.querySelector('#button');
+const gridContainer = document.querySelector('#container');
 
-function getRandomColorGenerator() {
-  let hex = "0123456789ABCDEF";
-  let color = "#";
-  for (let i = 0; i < 6; i++) {
-    color += hex[Math.floor(Math.random() * 16)];
-  }
-  return color;
+function random(number) {
+  return Math.floor(Math.random() * number);
+}
+
+function randomColorGenerator() {
+  const randomCol = `rgba(${random(255)}, ${random(255)}, ${random(255)}, 1.0)`;
+  return randomCol;
 }
 
 function makeFirstGridRowsAndColumn(rows, cols) {
-  gridContainer.style.setProperty("--grid-rows", rows);
-  gridContainer.style.setProperty("--grid-cols", cols);
+  gridContainer.style.setProperty('--grid-rows', rows);
+  gridContainer.style.setProperty('--grid-cols', cols);
   for (c = 0; c < rows * cols; c++) {
-    let cell = document.createElement("div");
-    gridContainer.appendChild(cell).className = "grid-item";
+    let cell = document.createElement('div');
+    gridContainer.appendChild(cell).className = 'grid-item';
 
-    cell.addEventListener("mouseenter", () => {
-      cell.style.backgroundColor = getRandomColorGenerator();
+    cell.addEventListener('mouseenter', () => {
+      cell.style.backgroundColor = randomColorGenerator();
     });
-    cell.addEventListener("mouseleave", () => {
-      cell.style.backgroundColor = getRandomColorGenerator();
+    cell.addEventListener('mouseleave', () => {
+      cell.style.backgroundColor = randomColorGenerator();
     });
   }
-
 }
 makeFirstGridRowsAndColumn(16, 16);
 
 function createNewGridAfterValidInput() {
-  let gridNum = parseInt(prompt("how many squares per side for new grid?: "));
+  let gridNum = parseInt(prompt('how many squares per side for new grid?: '));
 
   if (gridNum <= 64) {
-   makeFirstGridRowsAndColumn(gridNum, gridNum);
+    makeFirstGridRowsAndColumn(gridNum, gridNum);
   } else {
     do {
       alert('enter a number less than 64');
-      gridNum = parseInt(prompt("how many squares per side for new grid?: "));
+      gridNum = parseInt(prompt('how many squares per side for new grid?: '));
     } while (gridNum > 64);
     makeFirstGridRowsAndColumn(gridNum, gridNum);
   }
-
 }
 
 // clears the grid when button is clicked
 function clearGrid() {
-  gridContainer.innerText = "";
+  gridContainer.innerText = '';
   createNewGridAfterValidInput();
 }
 
-button.addEventListener("click", clearGrid);
+button.addEventListener('click', clearGrid);
