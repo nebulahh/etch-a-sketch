@@ -1,2 +1,2 @@
 # etch-a-sketch
-this is a game
+random colors will be generated when you hover the square 
